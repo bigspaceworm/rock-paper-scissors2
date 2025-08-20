@@ -6,6 +6,7 @@
 	</head>
 	<body>
 		<script>
+			const ROUNDS = 5;
 			let humanScore = 0;
 			let computerScore = 0;
 
@@ -29,9 +30,6 @@
 				let humanChoice = prompt("Pick: 'rock', 'paper' or 'scissors'");
 				return humanChoice;
 			}
-
-			const hChoice = getHumanChoice();
-			const cChoice = getComputerChoice();
 
 			function playRound(humanChoice, computerChoice){
 				humanChoice = humanChoice.toLowerCase();
@@ -71,12 +69,25 @@
 						}
 						break;
 				}
-
-				console.log("Human score: " + humanScore);
-				console.log("Computer score: " + computerScore);
 			}
 
-			playRound(hChoice, cChoice);
+			function playGame(){
+				for(let i = 0; i < ROUNDS; i++){
+					playRound(getHumanChoice(), getComputerChoice());
+					console.log("CURRENT SCORE:");
+					console.log("Player: " + humanScore + " | " + "PC: " + computerScore);
+				}
+
+				if(humanScore > computerScore){
+					console.log("You win the game!");
+				} else if(humanScore == computerScore){
+					console.log("It's a tie!");
+				} else{
+					console.log("The PC wins the game!");
+				}
+			}
+
+			playGame();
 		</script>
 	</body>
 </html>

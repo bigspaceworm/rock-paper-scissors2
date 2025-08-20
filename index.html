@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Rock Paper Scissors</title>
+	</head>
+	<body>
+		<script>
+			function getComputerChoice(){
+				switch(Math.floor(Math.random() * 3)){
+					case 0:
+						return "rock";
+						break;
+					case 1:
+						return "paper";
+						break;
+					case 2:
+						return "scissors";
+						break;
+					default:
+						return "ERROR";
+				}
+			}
+		</script>
+	</body>
+</html>

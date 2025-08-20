@@ -6,6 +6,9 @@
 	</head>
 	<body>
 		<script>
+			let humanScore = 0;
+			let computerScore = 0;
+
 			function getComputerChoice(){
 				switch(Math.floor(Math.random() * 3)){
 					case 0:
@@ -26,6 +29,54 @@
 				let humanChoice = prompt("Pick: 'rock', 'paper' or 'scissors'");
 				return humanChoice;
 			}
+
+			const hChoice = getHumanChoice();
+			const cChoice = getComputerChoice();
+
+			function playRound(humanChoice, computerChoice){
+				humanChoice = humanChoice.toLowerCase();
+
+				switch(humanChoice){
+					case "rock":
+						if(computerChoice === "scissors"){
+							humanScore++;
+							console.log("You win!");
+						} else if (computerChoice === "rock"){
+							console.log("It's a tie!")
+						} else {
+							computerScore++;
+							console.log("The computer wins!");
+						}
+						break;
+					case "paper":
+						if(computerChoice === "rock"){
+							humanScore++;
+							console.log("You win!");
+						} else if (computerChoice === "paper"){
+							console.log("It's a tie!")
+						} else{
+							computerScore++;
+							console.log("The computer wins!");
+						}
+						break;
+					case "scissors":
+						if(computerChoice === "paper"){
+							humanScore++;
+							console.log("You win!");
+						} else if(computerChoice === "scissors"){
+							console.log("It's a tie!")
+						} else{
+							computerScore++;
+							console.log("The computer wins!");
+						}
+						break;
+				}
+
+				console.log("Human score: " + humanScore);
+				console.log("Computer score: " + computerScore);
+			}
+
+			playRound(hChoice, cChoice);
 		</script>
 	</body>
 </html>

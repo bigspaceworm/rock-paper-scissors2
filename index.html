@@ -5,89 +5,18 @@
 		<title>Rock Paper Scissors</title>
 	</head>
 	<body>
-		<script>
-			const ROUNDS = 5;
-			let humanScore = 0;
-			let computerScore = 0;
-
-			function getComputerChoice(){
-				switch(Math.floor(Math.random() * 3)){
-					case 0:
-						return "rock";
-						break;
-					case 1:
-						return "paper";
-						break;
-					case 2:
-						return "scissors";
-						break;
-					default:
-						return "ERROR";
-				}
-			}
-
-			function getHumanChoice(){
-				let humanChoice = prompt("Pick: 'rock', 'paper' or 'scissors'");
-				return humanChoice;
-			}
-
-			function playRound(humanChoice, computerChoice){
-				humanChoice = humanChoice.toLowerCase();
-
-				switch(humanChoice){
-					case "rock":
-						if(computerChoice === "scissors"){
-							humanScore++;
-							console.log("You win!");
-						} else if (computerChoice === "rock"){
-							console.log("It's a tie!")
-						} else {
-							computerScore++;
-							console.log("The computer wins!");
-						}
-						break;
-					case "paper":
-						if(computerChoice === "rock"){
-							humanScore++;
-							console.log("You win!");
-						} else if (computerChoice === "paper"){
-							console.log("It's a tie!")
-						} else{
-							computerScore++;
-							console.log("The computer wins!");
-						}
-						break;
-					case "scissors":
-						if(computerChoice === "paper"){
-							humanScore++;
-							console.log("You win!");
-						} else if(computerChoice === "scissors"){
-							console.log("It's a tie!")
-						} else{
-							computerScore++;
-							console.log("The computer wins!");
-						}
-						break;
-				}
-			}
-
-			function playGame(){
-				for(let i = 0; i < ROUNDS; i++){
-					playRound(getHumanChoice(), getComputerChoice());
-					console.log("CURRENT SCORE:");
-					console.log("Player: " + humanScore + " | " + "PC: " + computerScore);
-				}
-
-				if(humanScore > computerScore){
-					console.log("You win the game!");
-				} else if(humanScore == computerScore){
-					console.log("It's a tie!");
-				} else{
-					console.log("The PC wins the game!");
-				}
-			}
-
-			playGame();
-		</script>
+		<div id="playerButtons">
+			<button class="rock">Rock<br />🪨</button>
+			<button class="paper">Paper<br />📜</button>
+			<button class="scissors">Scissors<br />✂️</button>
+		</div>
+		<div id="results">
+			<p class="score">PLAYER: 0 | PC: 0 | DRAW: 0</p>
+			<p class="choices"></p>
+			<p class="roundResult"></p>
+			<p class="winner"></p>
+		</div>
+		<button class="restart">Restart</button>
+		<script src="script.js"></script>
 	</body>
 </html>

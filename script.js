@@ -4,29 +4,24 @@ let computerScore = 0;
 let drawScore = 0;
 
 const playerButtons = document.querySelector("#playerButtons").querySelectorAll("button");
+const restartButton = document.querySelector(".restart");
+const scoreDisplay = document.querySelector(".score");
+const choicesDisplay = document.querySelector(".choices");
+const roundResultDisplay = document.querySelector(".roundResult");
+const winnerDisplay = document.querySelector(".winner");
 
 playerButtons.forEach((button) => {
 	button.addEventListener("click",() => {
 		let humanChoice = button.className;
-		// test
-		console.log("button clicked: " + humanChoice);
 		let computerChoice = getComputerChoice();
-		//test
-		console.log("pc choice: " + computerChoice);
 		let roundWinner = playRound(humanChoice, computerChoice);
-		//test
-		console.log("round winner: " + roundWinner);
-		console.log("Player: " + humanScore);
-		console.log("PC: " + computerScore);
-		console.log("Draw: " + drawScore);
-		//--
+		setScoreDisplay();
 		setPlayersChoices(humanChoice, computerChoice);
 		setRoundWinner(roundWinner);
 		setFinalWinner(getFinalWinner());
 	})
 })
 
-//---
 function getComputerChoice(){
 	switch(Math.floor(Math.random() * 3)){
 		case 0:
@@ -80,12 +75,14 @@ function playRound(humanChoice, computerChoice){
 	}
 }
 
+function setScoreDisplay(){
+	scoreDisplay. textContent = "PLAYER: " + humanScore + " | " + "PC: "
+								+ computerScore + " | " + "DRAW: " + drawScore;
+}
+
 function setPlayersChoices(hChoice, cChoice){
 	let choices = "You chose " + hChoice + ". The computer chose " + cChoice + ".";
-	//--- test
-	console.log(choices);
-	//---
-	//DOM code here
+	choicesDisplay.textContent = choices;
 }
 
 function setRoundWinner(roundWinner){
@@ -103,10 +100,7 @@ function setRoundWinner(roundWinner){
 		default:
 			winner = "ERROR";
 	}
-	//-- test
-	console.log(winner);
-	//--
-	//DOM code
+	roundResultDisplay.textContent = winner;
 }
 
 function getFinalWinner(){
@@ -128,27 +122,28 @@ function setFinalWinner(finalWinner){
 		case "human":
 			winnerFinal = "PLAYER WINS!";
 			clearScores();
-			//dom code
 			break;
 		case "computer":
 			winnerFinal = "COMPUTER WINS!";
 			clearScores();
-			//dom code
 			break;
 		case "none":
 			winnerFinal = "";
-			//dom code?
 			break;
 	}
-	//test
-	console.log(winnerFinal);
-	//--
-	//DOM code
+	winnerDisplay.textContent = winnerFinal;
 }
 
 function clearScores(){
 	humanScore = 0;
 	computerScore = 0;
 	drawScore = 0;
-	//DOM code
 }
+
+restartButton.addEventListener("click",() =>{
+	clearScores();
+	setScoreDisplay();
+	choicesDisplay.textContent = "";
+	roundResultDisplay.textContent = "";
+	winnerDisplay.textContent = "";
+})

@@ -128,7 +128,7 @@ function setFinalWinner(finalWinner){
 			clearScores();
 			break;
 		case "none":
-			winnerFinal = "";
+			winnerFinal = ". . . . . . . . . . . .";
 			break;
 	}
 	winnerDisplay.textContent = winnerFinal;
@@ -143,7 +143,7 @@ function clearScores(){
 restartButton.addEventListener("click",() =>{
 	clearScores();
 	setScoreDisplay();
-	choicesDisplay.textContent = "";
-	roundResultDisplay.textContent = "";
-	winnerDisplay.textContent = "";
+	choicesDisplay.textContent = ". . . . . . . . . . . . . .";
+	roundResultDisplay.textContent = ". . . . . . . . . . . . . .";
+	winnerDisplay.textContent = ". . . . . . . . . . . .";
 })

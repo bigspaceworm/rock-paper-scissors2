@@ -2,21 +2,27 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
+		<link rel="stylesheet" href="styles.css">
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Doto:wght@100..900&display=swap');
+		</style>
 		<title>Rock Paper Scissors</title>
 	</head>
 	<body>
-		<div id="playerButtons">
-			<button class="rock">Rock<br />🪨</button>
-			<button class="paper">Paper<br />📜</button>
-			<button class="scissors">Scissors<br />✂️</button>
+		<div class="container">
+			<div id="playerButtons">
+				<button class="rock">Rock<br />🪨</button>
+				<button class="paper">Paper<br />📜</button>
+				<button class="scissors">Scissors<br />✂️</button>
+			</div>
+			<div id="results">
+				<p class="score">PLAYER: 0 | PC: 0 | DRAW: 0</p>
+				<p class="choices">. . . . . . . . . . . . . .</p>
+				<p class="roundResult">. . . . . . . . . . . . . .</p>
+				<p class="winner">. . . . . . . . . . . .</p>
+			</div>
+			<button class="restart">Restart</button>
 		</div>
-		<div id="results">
-			<p class="score">PLAYER: 0 | PC: 0 | DRAW: 0</p>
-			<p class="choices"></p>
-			<p class="roundResult"></p>
-			<p class="winner"></p>
-		</div>
-		<button class="restart">Restart</button>
 		<script src="script.js"></script>
 	</body>
 </html>
